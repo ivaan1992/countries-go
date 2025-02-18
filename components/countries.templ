@@ -22,6 +22,7 @@ templ Countries(countries[] models.Country) {
 
 templ CountryList(countries[] models.Country) {
       <div id="country-list" class="country-list">
+      if len(countries) > 0 {
           for _, country := range countries {
             <div class="country-item">
                 <h2>
@@ -31,5 +32,8 @@ templ CountryList(countries[] models.Country) {
                 <p>Continent: {country.Continent}</p>
             </div>
           }
+      } else {
+        <p>No country found</p>
+      }
       </div>
 }
