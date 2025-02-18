@@ -1,0 +1,19 @@
+package components
+
+import (
+    "strconv"
+    "countries/models"
+)
+
+templ CountryDetail(country models.Country) {
+    @Base(country.Name) {
+        <div class="country-item">
+            <h2>{country.Name}</h2>
+            <p>Capital: {country.Capital}</p>
+            <p>Population: {strconv.Itoa(country.Population)}</p>
+            <p>Continent: {country.Continent}</p>
+            <p>Description: {country.Description}</p>
+        </div> 
+    }
+    
+}

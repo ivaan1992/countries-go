@@ -1,0 +1,35 @@
+package components
+
+import "countries/models"
+
+templ Countries(countries[] models.Country) {
+  @Base("Countries of the world") {
+      <div>
+          <input 
+              type="search"
+              name="search"
+              hx-get="/search"
+              hx-trigger="keyup changed delay:1s"
+              hx-target="#country-list"
+          /> 
+          
+          @CountryList(countries)
+      </div>
+  }
+}
+
+
+
+templ CountryList(countries[] models.Country) {
+      <div id="country-list" class="country-list">
+          for _, country := range countries {
+            <div class="country-item">
+                <h2>
+                    <a href={templ.SafeURL("/country/" + country.Name)}>{country.Name}</a>
+                </h2>
+                <p>Capital: {country.Capital}</p>
+                <p>Continent: {country.Continent}</p>
+            </div>
+          }
+      </div>
+}
